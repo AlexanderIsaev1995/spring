@@ -8,8 +8,7 @@ import java.util.Objects;
 
 
 @MappedSuperclass
-public class EntityBase {
-
+public abstract class EntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

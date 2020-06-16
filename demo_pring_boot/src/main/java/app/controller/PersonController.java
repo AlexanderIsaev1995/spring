@@ -1,20 +1,15 @@
 package app.controller;
 
 import app.dto.PersonDto;
-import app.entity.Person;
 import app.service.PersonService;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,7 +27,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/persons")
 public class PersonController {
     private final PersonService personService;
 
@@ -42,7 +37,7 @@ public class PersonController {
     }
 
     @GetMapping(value = "/{id}")
-    public PersonDto getPersonById(@PathVariable("id") Long id, @RequestHeader HttpHeaders httpHeaders) {
+    public PersonDto getPersonById(@PathVariable("id") Long id) {
         return personService.getPersonById(id);
     }
 
