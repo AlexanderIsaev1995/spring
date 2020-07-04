@@ -1,6 +1,11 @@
 spring:
-  datasource:
+  primary-datasource:
     url: jdbc:mysql://localhost:3306/spring_demo?createDatabaseIfNotExist=true&useUnicode=true&serverTimezone=UTC
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.jdbc.Driver
+  datasource:
+    url: jdbc:mysql://localhost:3306/employees?createDatabaseIfNotExist=true&useUnicode=true&serverTimezone=UTC
     username: root
     password: 1234
     driver-class-name: com.mysql.jdbc.Driver
@@ -17,8 +22,9 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
 server:
   port: 8080
-  servlet:
-    context-path: /demo
 
 test:
   field: "value"
+
+jwt:
+  secret: secret

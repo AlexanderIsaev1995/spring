@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(value = "customer")
 public class Customer extends Person {
-    @Column(name = "customer_number", nullable = false)
+    @Column(name = "customer_number")
     private String customerNumber;
 
     public String getCustomerNumber() {

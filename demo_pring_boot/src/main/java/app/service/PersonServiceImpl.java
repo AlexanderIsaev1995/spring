@@ -1,15 +1,19 @@
 package app.service;
 
+import app.converter.CustomConversionService;
 import app.dto.PersonDto;
+import app.entity.Address;
 import app.entity.Person;
 import app.exception.PersonException;
 import app.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.convert.ConversionService;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.SetJoin;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,14 +21,12 @@ import java.util.stream.Collectors;
 @Transactional
 public class PersonServiceImpl implements PersonService {
     private final PersonRepository personRepository;
-    private final ConversionService conversionService;
-    private final String value;
+    private final CustomConversionService conversionService;
 
     @Autowired
-    public PersonServiceImpl(PersonRepository personRepository, ConversionService conversionService, @Value("test.field") String value) {
+    public PersonServiceImpl(PersonRepository personRepository, CustomConversionService conversionService) {
         this.personRepository = personRepository;
         this.conversionService = conversionService;
-        this.value = value;
     }
 
     @Override
